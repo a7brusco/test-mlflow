@@ -8,7 +8,7 @@ def change_artifact_uri(dirname: str, run):
     meta_run = os.path.join(mlruns_dir, run.info.experiment_id, run.info.run_id, "meta.yaml")
     with open(meta_run, "r+") as f:
         data = yaml.safe_load(f)
-        data["artifact_uri"] = r"//192.168.4.204/dna/test-mlflow-artifacts"
+        data["artifact_uri"] = os.path.join(r"//192.168.4.204/dna/test-mlflow-artifacts", run.info.experiment_id, run.info.run_id)
         yaml.dump(data, f)
 
 
